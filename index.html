@@ -22,13 +22,17 @@
             <button type="submit">إرسال الإجابة</button>
           </form>
           <div id="result" class="result" style="display: none">
-            <h3>الإجابة الصحيحة: <span id="correct-answer"></span></h3>
-            <h4>
-              إجابتك: <span id="user-answer"></span> (<span
-                id="answer-status"
-              ></span
-              >)
-            </h4>
+            <div id="correct-answer-div" class="correct-answer-div">
+              <h3>الإجابة الصحيحة: <span id="correct-answer"></span></h3>
+            </div>
+            <div id="user-answer-div" class="user-answer-div">
+              <h4>
+                إجابتك: <span id="user-answer"></span> (<span
+                  id="answer-status"
+                ></span
+                >)
+              </h4>
+            </div>
             <button id="next-question" style="display: none">
               السؤال التالي
             </button>
@@ -40,6 +44,7 @@
             مجموع النقاط: <span id="score"></span> من
             <span id="total-score"></span>
           </p>
+          <div id="final-message"></div>
           <button onclick="retryQuiz()">إعادة المحاولة</button>
         </div>
       </div>

@@ -126,38 +126,45 @@ function handleFormSubmit(event) {
   const correctAnswer = questions[currentQuestionIndex].answer;
 
   const isCorrect = userAnswer === correctAnswer;
-  if (isCorrect) {
-    score++;
-    answerStatus.className = "correct"; // Apply green style
-    answerStatus.textContent = "صحيحة";
-  } else {
-    answerStatus.className = "wrong"; // Apply red style
-    answerStatus.textContent = "خاطئة";
-  }
 
+  // Update correct answer div
+  const correctAnswerText = document.getElementById("correct-answer");
   correctAnswerText.textContent = correctAnswer;
+
+  // Update user answer div
+  const userAnswerText = document.getElementById("user-answer");
   userAnswerText.textContent = userAnswer;
 
-  resultContainer.style.display = "block";
-  form.style.display = "none"; // Hide the form temporarily
-  const nextQuestionButton = document.getElementById("next-question");
-  nextQuestionButton.style.display = "block"; // Show the next question button
+  const answerStatus = document.getElementById("answer-status");
+  const userAnswerDiv = document.getElementById("user-answer-div");
+  if (isCorrect) {
+    answerStatus.textContent = "صحيحة";
+    userAnswerDiv.classList.add("correct");
+    userAnswerDiv.classList.remove("wrong");
+    score++;
+    console.log(score)
+  } else {
+    answerStatus.textContent = "خاطئة";
+    userAnswerDiv.classList.add("wrong");
+    userAnswerDiv.classList.remove("correct");
+  }
 
+  // Show result container and manage next question button
+  const resultContainer = document.getElementById("result");
+  resultContainer.style.display = "block";
+  form.style.display = "none";
+
+  const nextQuestionButton = document.getElementById("next-question");
+  nextQuestionButton.style.display = "block";
   nextQuestionButton.onclick = () => {
     currentQuestionIndex++;
-    resultContainer.style.display = "none"; // Hide the result
-    nextQuestionButton.style.display = "none"; // Hide the button again
-    form.style.display = "block"; // Show the form again
-    loadQuestion(); // Load the next question
+    resultContainer.style.display = "none";
+    nextQuestionButton.style.display = "none";
+    form.style.display = "block";
+    loadQuestion();
   };
 }
 
-function showFinalResult() {
-  finalResultContainer.style.display = "block";
-  scoreText.textContent = score;
-  totalScoreText.textContent = questions.length;
-  document.getElementById("question-container").style.display = "none";
-}
 
 function retryQuiz() {
   currentQuestionIndex = 0;
@@ -167,6 +174,35 @@ function retryQuiz() {
   resultContainer.style.display = "none";
   loadQuestion();
 }
+
+function showFinalResult() {
+  const totalScore = questions.length;
+  const percentage = (score / totalScore) * 100;
+
+  // Update score and total score
+  document.getElementById("score").textContent = score;
+  document.getElementById("total-score").textContent = totalScore;
+
+  // Get the final message container
+  const finalMessage = document.getElementById("final-message");
+
+  if (percentage >= 80) {
+    finalMessage.textContent = "🎉 رائع جدًا! لقد أبدعت! استمر في التميز! 🎉";
+    finalMessage.className = "celebration";
+  } else {
+    finalMessage.textContent =
+      "لا بأس! حاول مرة أخرى، وستتحسن! التقدم المستمر هو الأهم. 💪";
+    finalMessage.className = "encouragement";
+  }
+
+  // Show final result container
+  document.getElementById("final-result").style.display = "block";
+  document.getElementById("question-container").style.display = "none";
+}
+
+
+
+
 
 form.addEventListener("submit", handleFormSubmit);
 loadQuestion();

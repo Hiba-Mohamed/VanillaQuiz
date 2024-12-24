@@ -16,31 +16,29 @@ body {
   border-radius: 5px;
 }
 
-h1{
+h1 {
   margin-top: 50px;
   text-align: center;
 }
 
-h2{
+h2 {
   font-size: 20px;
   font-weight: 500;
 }
 
-
-
-h4{
-font-size: 20px;
-font-weight: 500;
+h4 {
+  font-size: 20px;
+  font-weight: 500;
 }
 
-.quiz-container p{
+.quiz-container p {
   font-size: 20px;
   font-weight: bold;
 }
 
 button {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   cursor: pointer;
@@ -56,8 +54,6 @@ button:hover {
 .result {
   margin-top: 20px;
   padding: 10px;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
 }
 
 #final-result {
@@ -75,20 +71,51 @@ button:hover {
   margin-bottom: 10px;
 }
 
-.correct {
-  color: green;
-  font-weight: bold;
+/* Correct Answer Section */
+.correct-answer-div {
+  background-color: rgb(233, 246, 250);
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
-.wrong {
-  color: red;
-  font-weight: bold;
+/* User Answer Section */
+.user-answer-div {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.user-answer-div.correct {
+  background-color: rgb(236, 250, 236);
+}
+
+.user-answer-div.wrong {
+  background-color: rgb(251, 244, 244);
 }
 
 #result {
   margin-top: 20px;
   padding: 10px;
-  border: 2px solid #ddd;
   border-radius: 5px;
-  background-color: #f9f9f9;
+}
+
+/* Final message styling */
+#final-message {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.celebration {
+  background-color: rgb(238, 254, 238);
+  color: darkgreen;
+  border: 2px solid rgb(190, 217, 190);
+}
+
+.encouragement {
+  background-color: rgb(251, 241, 241);
+  color: darkred;
+  border: 2px solid rgb(250, 225, 225);
 }
