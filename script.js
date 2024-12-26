@@ -238,6 +238,25 @@ function showFinalResult() {
   document.getElementById("final-result").style.display = "block";
   document.getElementById("question-container").style.display = "none";
 }
+function showNextQuestion() {
+  const quizContainer = document.querySelector(".quiz-container");
+
+  // Add the zoom-in animation class
+  quizContainer.classList.add("zoom-in");
+
+  // Wait for the animation to complete, then remove the class
+  setTimeout(() => {
+    quizContainer.classList.remove("zoom-in");
+
+    // Update the question content here
+    const questionText = document.getElementById("question-text");
+  }, 800); // Match the duration of the animation (800ms)
+}
+  const nextQuestionButton = document.getElementById("next-question");
+
+nextQuestionButton
+  .addEventListener("click", showNextQuestion);
+
 
 form.addEventListener("submit", handleFormSubmit);
 loadQuestion();
