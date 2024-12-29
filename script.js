@@ -188,7 +188,7 @@ function showFinalResult() {
   // Get the final message container
   const finalMessage = document.getElementById("final-message");
 
-  if (percentage >= 80) {
+  if (percentage >= 70) {
     finalMessage.textContent = "🎉 رائع جدًا! لقد أبدعت! استمر في التميز! 🎉";
     finalMessage.className = "celebration";
   } else {
